@@ -15,9 +15,10 @@ namespace Boukenken.Gdax
     {
         string[] ProductIds { get; }
         Task SubscribeAsync(Action<string> messageReceived);
+        RealtimeMessage ParseMessage(byte[] message);
     }
 
-    public class RealtimeClient : IRealtimeClient
+    public class RealtimeClient
     {
         private Uri _websocketFeedUri;
 
@@ -87,7 +88,7 @@ namespace Boukenken.Gdax
             }
         }
 
-        private RealtimeMessage ParseMessage(byte[] message)
+        public RealtimeMessage ParseMessage(byte[] message)
         {
             var jsonResponse = Encoding.UTF8.GetString(message, 0, message.Length);
             var jToken = JToken.Parse(jsonResponse);

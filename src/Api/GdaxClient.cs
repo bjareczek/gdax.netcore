@@ -37,7 +37,11 @@ namespace Boukenken.Gdax
         public async Task<HttpResponseMessage> GetResponseAsync(ApiRequest request)
         {
             var httpRequest = BuildRequestMessagee(request);
-            httpRequest.Headers.Add("User-Agent", "GdaxClient (+https://sefbkn.github.io/)");
+            httpRequest.Headers.Add("User-Agent", "NET Framework Test Client");
+            //httpRequest.Headers.Add("Accept", "application/json");
+            //httpRequest.Headers.Add("Content-Type", "application/json");
+        //    Accept: 'application/json',
+        //'Content-Type': 'application/json'
             return await _httpClient.SendAsync(httpRequest).ConfigureAwait(false);
         }
 
